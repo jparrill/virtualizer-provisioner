@@ -1,0 +1,20 @@
+---
+- name: "[kcli] Enable Kcli copr repo"
+  community.general.copr:
+    name: karmab/kcli
+
+- name: "[kcli] Install kcli"
+  ansible.builtin.dnf:
+    name:
+      - kcli
+    state: present
+
+- name: "[kcli] Create default pool"
+  ansible.builtin.command: "kcli create pool -p /var/lib/libvirt/images default"
+
+##- name: Add the user 'james' with a bash shell, appending the group 'admins' and 'developers' to the user's groups
+##  ansible.builtin.user:
+##    name: james
+##    shell: /bin/bash
+##    groups: admins,developers
+##    append: yes

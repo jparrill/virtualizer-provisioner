@@ -1,0 +1,14 @@
+---
+- name: "[main] Check connectivity"
+  ping:
+    data: alive
+  tags: check
+
+- name: "[main] Configure sysctl for IPv4 and IPv6"
+  import_tasks: sysctl.yml
+
+- name: "[main] Install Packages"
+  import_tasks: packages.yml
+
+- name: "[main] Install and configure Kcli"
+  import_tasks: kcli.yml
