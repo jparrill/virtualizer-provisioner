@@ -1,0 +1,19 @@
+---
+- name: [ksushi] Install python3-pyOpenSSL and python3-cherrypy packages
+  dnf:
+    name:
+      - python3-pyOpenSSL.noarch
+      - python3-cherrypy
+    state: present
+
+- name: [ksushi] Execute kcli create sushy-service command
+  command: kcli create sushy-service --ssl --ipv6 --port 9000
+  notify:
+    - Trigger systemctl daemon-reload
+    - Enable and start ksushy service
+
+- name: [ksushi] Restart libvirtd service
+  systemd:
+    name: libvirtd
+    state: restarted
+    enabled: yes

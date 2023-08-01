@@ -1,0 +1,10 @@
+host-record=api-int.{{ hosted_cluster_name }}.{{ server_fqdn }},{{ ipv6_network }}::5
+host-record=api-int.{{ hosted_cluster_name }}.{{ server_fqdn }},{{ ipv6_network }}::6
+host-record=api-int.{{ hosted_cluster_name }}.{{ server_fqdn }},{{ ipv6_network }}::7
+host-record=api.{{ hosted_cluster_name }}.{{ server_fqdn }},{{ ipv6_network }}::5
+host-record=api.{{ hosted_cluster_name }}.{{ server_fqdn }},{{ ipv6_network }}::6
+host-record=api.{{ hosted_cluster_name }}.{{ server_fqdn }},{{ ipv6_network }}::7
+address=/apps.{{ hosted_cluster_name }}.{{ server_fqdn }}/{{ ipv6_network }}::60
+dhcp-host=aa:aa:aa:aa:04:11,{{ hosted_cluster_name }}-worker0,[{{ ipv6_network }}::11]
+dhcp-host=aa:aa:aa:aa:04:12,{{ hosted_cluster_name }}-worker1,[{{ ipv6_network }}::12]
+dhcp-host=aa:aa:aa:aa:04:13,{{ hosted_cluster_name }}-worker2,[{{ ipv6_network }}::13]

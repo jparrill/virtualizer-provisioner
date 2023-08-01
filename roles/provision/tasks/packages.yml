@@ -1,18 +1,51 @@
 ---
 - name: "[packages] Install required packages"
-  ansible.builtin.dnf:
-    name:
-      - dnsmasq
-      - radvd
-      - vim
-      - golang
-      - libvirt
-      - libvirt-daemon-driver-qemu
-      - qemu-kvm
+  dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - dnsmasq
+    - radvd
+    - vim
+    - golang
+    - podman
+    - bind-utils
+    - net-tools
+    - httpd-tools
+    - tree
+    - htop
+    - strace
+    - tmux
+    - libvirt
+    - libvirt-daemon-driver-qemu
+    - qemu-kvm
+    - httpd
+    - jq
+    - skopeo
+    - libseccomp-devel
+
+- name: [packages] Notify to enable podman service
+  notify:
+    - Enable and start podman service
+
+- name: [packages] Create a new group called libvirt
+  group:
+    name: libvirt
     state: present
 
-- name: "[packages] Start and enable Libvirtd"
-  ansible.builtin.systemd:
-    name: libvirtd
-    state: started
-    enabled: true
+- name: [packages] Add the current user to groups qemu and libvirt
+  user:
+    name: "{{ ansible_user }}"
+    groups: "qemu,libvirt"
+    append: yes
+
+- name: [packages] Set ACL for /var/lib/libvirt/images directory
+  acl:
+    name: "{{ ansible_user }}"
+    entity: "{{ ansible_user }}"
+    etype: user
+    perms: rwx
+    path: /var/lib/libvirt/images
+    state: present
+  notify:
+    - Enable and start libvirtd service

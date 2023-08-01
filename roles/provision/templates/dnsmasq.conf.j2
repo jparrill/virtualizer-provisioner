@@ -1,0 +1,26 @@
+strict-order
+bind-dynamic
+#log-queries
+bogus-priv
+dhcp-authoritative
+
+#bm Network IPv6
+dhcp-range={{ ipv6_network_name }},{{ ipv6_network }}::11,{{ ipv6_network }}::20,64
+dhcp-option={{ ipv6_network_name }},option6:dns-server,{{ ipv6_network }}::1
+
+#bm Network IPv4
+dhcp-range={{ ipv4_network_name }},{{ ipv4_network }}.120,{{ ipv4_network }}.250,255.255.255.0,24h
+dhcp-option={{ ipv4_network_name }},option:dns-server,{{ ipv4_network }}.1
+dhcp-option={{ ipv4_network_name }},option:router,{{ ipv4_network }}.1
+
+resolv-file=/opt/dnsmasq/upstream-resolv.conf
+except-interface=lo
+dhcp-lease-max=81
+log-dhcp
+no-hosts
+
+# DHCP Reservations
+dhcp-leasefile=/opt/dnsmasq/hosts.leases
+
+# Include all files in a directory depending on the suffix
+conf-dir=/opt/dnsmasq/include.d/*.ipv6

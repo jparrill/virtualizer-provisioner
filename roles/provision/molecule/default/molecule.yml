@@ -6,10 +6,14 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: instance
+  - name: centos-stream8-hap
     image: quay.io/centos/centos:stream8
     pre_build_image: true
     privileged: true
+    capabilities:
+      - SYS_ADMIN
+    #volumes:
+    #  - /sys/fs/cgroup:/sys/fs/cgroup:ro
 provisioner:
   name: ansible
 verifier:

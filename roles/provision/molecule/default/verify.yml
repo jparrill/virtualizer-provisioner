@@ -1,10 +1,61 @@
 ---
-# This is an example playbook to execute Ansible tests.
-
 - name: Verify
   hosts: all
-  gather_facts: false
+  gather_facts: true
   tasks:
-    - name: Example assertion
-      ansible.builtin.assert:
-        that: true
+    - name: Verify base-config
+      assert:
+        that:
+          - "'hypershiftbm.lab' == ansible_hostname"
+          - "'firewalld' not in ansible_facts.services"
+          - ansible_selinux.status == 'disabled'
+          - "'ipv6.conf' in ansible_facts.filesystem.dirs['/etc/sysctl.d/']"
+          - "'openshift_pull.json' in ansible_facts.filesystem.dirs['/root/baremetal/hub/']"
+          - "'/etc/NetworkManager/dispatcher.d/forcedns' in ansible_facts.filesystem.files"
+        success_msg: "base-config verified!"
+
+    - name: Verify packages
+      assert:
+        that:
+          - "'podman' in ansible_facts.services"
+          - "'libvirtd' in ansible_facts.services"
+          - "'dnsmasq', 'radvd', 'vim', 'golang', 'podman', 'bind-utils', 'net-tools', 'httpd-tools', 'tree', 'htop', 'strace', 'tmux', 'libvirt', 'libvirt-daemon-driver-qemu', 'qemu-kvm', 'httpd', 'jq', 'skopeo', 'libseccomp-devel' in ansible_facts.packages"
+          - "'libvirt' in ansible_facts.groups"
+        success_msg: "packages verified!"
+
+    - name: Verify kcli
+      assert:
+        that:
+          - "'kcli' in ansible_facts.packages"
+        success_msg: "kcli verified!"
+
+    - name: Verify dnsmasq
+      assert:
+        that:
+          - "'hosts.leases', 'dnsmasq.conf', 'upstream-resolv.conf' in ansible_facts.filesystem.dirs['/opt/dnsmasq/']"
+          - "'infra.ipv6', 'hub.ipv6', 'hosted.ipv6' in ansible_facts.filesystem.dirs['/opt/dnsmasq/include.d/']"
+          - "'dnsmasq-virt' in ansible_facts.services"
+        success_msg: "dnsmasq verified!"
+
+    - name: Verify radvd
+      assert:
+        that:
+          - "'radvd.conf' in ansible_facts.filesystem.dirs['/etc/']"
+          - "'radvd' in ansible_facts.services"
+        success_msg: "radvd verified!"
+
+    - name: Verify ksushy
+      assert:
+        that:
+        - "'python3-pyOpenSSL.noarch', '' in ansible_facts.packages"
+        - "'ksushy' in ansible_facts.services"
+        success_msg: "ksushy verified!"
+
+    - name: Verify registry
+      assert:
+        that:
+        - "'registry.sh' in ansible_facts.filesystem.dirs['/root/']"
+        - "'podman' in ansible_facts.services"
+        - "'registry' in ansible_facts.services"
+        success_msg: "registry verified!"
+

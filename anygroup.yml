@@ -1,4 +1,6 @@
 ---
-- hosts: anygroup
+- name: Setup hypervisor
+  hosts: anygroup
+  become: true
   roles:
     - provision

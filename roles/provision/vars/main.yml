@@ -1,2 +1,18 @@
 ---
-# vars file for provision
+upstream_dns_01: 10.11.5.160
+upstream_dns_02: 10.2.70.215
+server_fqdn: hypershiftbm.lab
+ipv6_network: "2620:52:0:1306"
+ipv6_mask: "/64"
+ipv6_network_name: "ipv6"
+ipv6_cluster_name: "hub-ipv6"
+ipv4_network: "192.168.125"
+ipv4_mask: "/24"
+ipv4_network_name: "ipv4"
+hosted_cluster_name: "hosted"
+
+# Instructions:
+# 1. Obtain your Red Hat OpenShift pull secret from https://cloud.redhat.com/openshift/install/pull-secret
+# 2. Copy the pull secret content and replace the entire content of this file with the copied content.
+# 3. Save the file and run the playbook again.
+pullSecret: # 4. Paste your Red Hat OpenShift pull secret here

@@ -1,2 +1,41 @@
 ---
-# handlers file for provision
+# Handlers
+- name: Enable and start podman service
+  systemd:
+    name: podman
+    state: started
+    enabled: yes
+
+- name: Enable and start libvirtd service
+  systemd:
+    name: libvirtd
+    state: started
+    enabled: yes
+
+- name: Trigger systemctl daemon-reload
+  systemd:
+    state: reloaded
+
+- name: Enable and start dnsmasq-virt service
+  systemd:
+    name: dnsmasq-virt
+    state: started
+    enabled: yes
+
+- name: Enable and start radvd service
+  systemd:
+    name: radvd
+    state: started
+    enabled: yes
+
+- name: Enable and start ksushy service
+  systemd:
+    name: ksushy
+    state: started
+    enabled: yes
+
+- name: Enable and start registry service
+  systemd:
+    name: registry
+    state: started
+    enabled: yes

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+export IP="{{ ipv6_network }}::1"
+export BASE_RESOLV_CONF="/run/NetworkManager/resolv.conf"
+
+if ! [[ `grep -q "$IP" /etc/resolv.conf` ]]; then
+export TMP_FILE=$(mktemp /etc/forcedns_resolv.conf.XXXXXX)
+cp $BASE_RESOLV_CONF $TMP_FILE
+chmod --reference=$BASE_RESOLV_CONF $TMP_FILE
+sed -i -e "s/{{ server_fqdn }}//" -e "s/search /& {{ server_fqdn }} /" -e "0,/nameserver/s/nameserver/& $IP\n&/" $TMP_FILE
+mv $TMP_FILE /etc/resolv.conf
+fi
+
+echo "ok"

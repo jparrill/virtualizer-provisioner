@@ -1,0 +1,53 @@
+---
+- name: "[base-config] Configure sysctl for IPv4 and IPv6"
+  copy:
+    dest: "/etc/sysctl.d/ipv6.conf"
+    content: |
+      net.ipv4.conf.all.rp_filter=0
+      net.ipv6.conf.all.forwarding=1
+      net.ipv6.conf.all.accept_ra=2
+      net.ipv6.conf.lo.disable_ipv6=0
+
+- name: "[base-config] Apply system sysctl config"
+  command: "sysctl --system"
+
+- name: [base-config] Disable SELinux in the current session
+  seboolean:
+    name: selinuxuser_use_ssh_chroot
+    state: no
+    persistent: yes
+
+- name: [base-config] Disable SELinux permanently after reboot
+  selinux:
+    policy: targeted
+    state: disabled
+
+- name: [base-config] Stop and disable firewalld service
+  systemd:
+    name: firewalld
+    state: stopped
+    enabled: no
+
+- name: [base-config] Create forcedns dispatcher script
+  template:
+    src: templates/forcedns.j2
+    dest: /etc/NetworkManager/dispatcher.d/forcedns
+    mode: 0755
+
+- name: [base-config] Execute the forcedns script
+  script: /etc/NetworkManager/dispatcher.d/forcedns
+
+- name: [base-config] Set the server hostname
+  hostname:
+    name: {{ server_fqdn }}
+
+- name: [base-config] Create the /root/baremetal/hub/ directory
+  file:
+    path: /root/baremetal/hub
+    state: directory
+    mode: '0755'
+
+- name: [base-config] Create the /root/baremetal/hub/openshift_pull.json file with instructions
+  copy:
+    content: {{ pullSecret }}
+    dest: /root/baremetal/hub/openshift_pull.json

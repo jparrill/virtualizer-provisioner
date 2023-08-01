@@ -1,31 +1,44 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Ansible role to prepare the requisites to create a baremetal Openshift cluster
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+- Community modules
+- Valid Pull Secret, you need to fill the variable up in the `vars/main.yml` file
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+- upstream_dns_01: "IP of the first upstream DNS"
+- upstream_dns_02: "IP of the second upstream DNS"
+- server_fqdn: "server FQDN for cluster domain purposes"
+- ipv6_network: "IPv6 network prefix"
+- ipv6_mask: "IPv6 network mask"
+- ipv6_network_name: "IPv6 Interface name"
+- ipv6_cluster_name: "Openshift cluster name"
+- ipv4_network: "IPv4 network prefix"
+- ipv4_mask: "IPv4 network mask"
+- ipv4_network_name: "IPv4 interface name"
+- hosted_cluster_name: "hostedcluster name"
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+- no dependencies
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```
+- name: Setup hypervisor
+  hosts: anygroup
+  become: true
+  roles:
+    - provision
+```
 
 License
 -------
@@ -35,4 +48,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+This is not a role supported by RedHat.

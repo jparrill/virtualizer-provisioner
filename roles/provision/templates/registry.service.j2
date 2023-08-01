@@ -1,0 +1,14 @@
+[Unit]
+Description=Container Registry For Disconnected OCP Deployments
+After=network.target
+
+[Service]
+User=root
+Group=root
+Restart=always
+ExecStart=/usr/bin/podman start -a registry
+ExecStop=/usr/bin/podman stop -t 2 registry
+
+
+[Install]
+WantedBy=multi-user.target
