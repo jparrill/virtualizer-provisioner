@@ -1,7 +1,9 @@
 ---
-- name: [radvd] Create /etc/radvd.conf file
+- name: RADVD - Create /etc/radvd.conf file
   template:
     src: templates/radvd.conf.j2
     dest: /etc/radvd.conf
   notify:
     - Enable and start radvd service
+
+- meta: flush_handlers

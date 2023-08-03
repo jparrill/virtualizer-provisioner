@@ -1,5 +1,5 @@
 ---
-- name: "[packages] Install required packages"
+- name: PACKAGES - Install required packages
   dnf:
     name: "{{ item }}"
     state: present
@@ -13,9 +13,9 @@
     - net-tools
     - httpd-tools
     - tree
-    - htop
     - strace
     - tmux
+    - wget
     - libvirt
     - libvirt-daemon-driver-qemu
     - qemu-kvm
@@ -23,29 +23,28 @@
     - jq
     - skopeo
     - libseccomp-devel
-
-- name: [packages] Notify to enable podman service
   notify:
     - Enable and start podman service
 
-- name: [packages] Create a new group called libvirt
+- name: PACKAGES - Create a new group called libvirt
   group:
     name: libvirt
     state: present
 
-- name: [packages] Add the current user to groups qemu and libvirt
+- name: PACKAGES - Add the current user to groups qemu and libvirt
   user:
     name: "{{ ansible_user }}"
     groups: "qemu,libvirt"
     append: yes
 
-- name: [packages] Set ACL for /var/lib/libvirt/images directory
+- name: PACKAGES - Set ACL for /var/lib/libvirt/images directory
   acl:
-    name: "{{ ansible_user }}"
     entity: "{{ ansible_user }}"
     etype: user
-    perms: rwx
+    permissions: rwx
     path: /var/lib/libvirt/images
     state: present
   notify:
     - Enable and start libvirtd service
+
+- meta: flush_handlers

@@ -1,51 +1,51 @@
 ---
-- name: [dnsmasq] Create /opt/dnsmasq folder
+- name: DNSMASQ - Create /opt/dnsmasq folder
   file:
     path: /opt/dnsmasq
     state: directory
 
-- name: [dnsmasq] Create dnsmasq.conf file
+- name: DNSMASQ - Create dnsmasq.conf file
   template:
     src: templates/dnsmasq.conf.j2
     dest: /opt/dnsmasq/dnsmasq.conf
 
-- name: [dnsmasq] Create hosts.leases file
+- name: DNSMASQ - Create hosts.leases file
   file:
     path: /opt/dnsmasq/hosts.leases
     state: touch
 
-- name: [dnsmasq] Create upstream-resolv.conf file
-  lineinfile:
-    path: /opt/dnsmasq/upstream-resolv.conf
-    line: "{{ item }}"
-  loop:
-    - "nameserver {{ upstream_dns_01 }}"
-    - "nameserver {{ upstream_dns_02 }}"
+- name: DNSMASQ - Create upstream-resolv.conf file
+  copy:
+    dest:  /opt/dnsmasq/upstream-resolv.conf
+    content: |
+      ## File generate via Ansible
 
-- name: [dnsmasq] Create include.d directory
+      nameserver {{ upstream_dns_01 }}
+      nameserver {{ upstream_dns_02 }}
+
+- name: DNSMASQ - Create include.d directory
   file:
     path: /opt/dnsmasq/include.d
     state: directory
 
-- name: [dnsmasq] Create dnsmasq-virt systemd unit
+- name: DNSMASQ - Create dnsmasq-virt systemd unit
   template:
     src: templates/dnsmasq-virt.service.j2
     dest: /etc/systemd/system/dnsmasq-virt.service
   notify:
-    - Trigger systemctl daemon-reload
     - Enable and start dnsmasq-virt service
 
-- name: [dnsmasq] Create infra ipv6 file
+- name: DNSMASQ - Create infra ipv6 file
   template:
     src: templates/infra.ipv6.j2
     dest: /opt/dnsmasq/include.d/infra.ipv6
 
-- name: [dnsmasq] Create hub ipv6 file
+- name: DNSMASQ - Create hub ipv6 file
   template:
     src: templates/hub.ipv6.j2
     dest: /opt/dnsmasq/include.d/hub.ipv6
 
-- name: [dnsmasq] Create hosted ipv6 file
+- name: DNSMASQ - Create hosted ipv6 file
   template:
     src: templates/hosted.ipv6.j2
     dest: /opt/dnsmasq/include.d/hosted.ipv6

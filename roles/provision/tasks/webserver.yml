@@ -1,0 +1,17 @@
+---
+- name: WEBSRV - Create the webserver setup script
+  template:
+    src: websrv-ai.sh.j2
+    dest: /root/baremetal/websrv-ai.sh
+    mode: 0755
+
+- name: WEBSRV - Execute the webserver setup script
+  command: bash /root/baremetal/websrv-ai.sh
+
+- name: WEBSRV - Create the systemd unit for webserver
+  template:
+    src: websrv-ai.service.j2
+    dest: /etc/systemd/system/websrv-ai.service
+    mode: 0755
+  notify:
+    - Enable and start websrv-ai service

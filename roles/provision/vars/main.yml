@@ -1,4 +1,6 @@
 ---
+ansible_user: root
+remote_user: root
 upstream_dns_01: 10.11.5.160
 upstream_dns_02: 10.2.70.215
 server_fqdn: hypershiftbm.lab
@@ -15,4 +17,5 @@ hosted_cluster_name: "hosted"
 # 1. Obtain your Red Hat OpenShift pull secret from https://cloud.redhat.com/openshift/install/pull-secret
 # 2. Copy the pull secret content and replace the entire content of this file with the copied content.
 # 3. Save the file and run the playbook again.
-pullSecret: # 4. Paste your Red Hat OpenShift pull secret here
+# 4. Paste your Red Hat OpenShift pull secret here
+pullSecret: "{'auths':{'registry.sample.lab:5000':{'auth':'ZHVtbXk6ZHVtbXk=','email':'jparrill@redhat.com'}}}"

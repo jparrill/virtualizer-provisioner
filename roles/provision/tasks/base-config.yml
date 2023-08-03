@@ -1,5 +1,12 @@
 ---
-- name: "[base-config] Configure sysctl for IPv4 and IPv6"
+- name: BASE - Install SELinux
+  dnf:
+    name:
+      - selinux-policy
+      - python3-libselinux
+    state: present
+
+- name: BASE - Configure sysctl for IPv4 and IPv6
   copy:
     dest: "/etc/sysctl.d/ipv6.conf"
     content: |
@@ -8,46 +15,50 @@
       net.ipv6.conf.all.accept_ra=2
       net.ipv6.conf.lo.disable_ipv6=0
 
-- name: "[base-config] Apply system sysctl config"
+- name: BASE - Apply system sysctl config
   command: "sysctl --system"
 
-- name: [base-config] Disable SELinux in the current session
+- name: BASE - Disable SELinux in the current session
   seboolean:
     name: selinuxuser_use_ssh_chroot
     state: no
     persistent: yes
+  tags: 'molecule-notest'
 
-- name: [base-config] Disable SELinux permanently after reboot
+- name: BASE - Disable SELinux permanently after reboot
   selinux:
     policy: targeted
     state: disabled
 
-- name: [base-config] Stop and disable firewalld service
+- name: BASE - Stop and disable firewalld service
   systemd:
     name: firewalld
     state: stopped
     enabled: no
+  tags: 'molecule-notest'
 
-- name: [base-config] Create forcedns dispatcher script
+- name: BASE - Create forcedns dispatcher script
   template:
-    src: templates/forcedns.j2
+    src: forcedns.j2
     dest: /etc/NetworkManager/dispatcher.d/forcedns
     mode: 0755
 
-- name: [base-config] Execute the forcedns script
+- name: BASE - Execute the forcedns script
   script: /etc/NetworkManager/dispatcher.d/forcedns
+  tags: 'molecule-notest'
 
-- name: [base-config] Set the server hostname
+- name: BASE - Set the server hostname
   hostname:
-    name: {{ server_fqdn }}
+    name: "{{ server_fqdn }}"
+  tags: 'molecule-notest'
 
-- name: [base-config] Create the /root/baremetal/hub/ directory
+- name: BASE - Create the /root/baremetal/hub/ directory
   file:
     path: /root/baremetal/hub
     state: directory
     mode: '0755'
 
-- name: [base-config] Create the /root/baremetal/hub/openshift_pull.json file with instructions
+- name: BASE - Create the /root/baremetal/hub/openshift_pull.json file
   copy:
-    content: {{ pullSecret }}
+    content: "{{ pullSecret }}"
     dest: /root/baremetal/hub/openshift_pull.json

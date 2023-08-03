@@ -1,18 +1,21 @@
 ---
-- name: [registry] Create the registry setup script
+- name: REGISTRY - Create the registry setup script
   template:
-    src: templates/registry_setup.sh.j2
+    src: registry_setup.sh.j2
     dest: /root/baremetal/registry.sh
     mode: 0755
 
-- name: [registry] Execute the registry setup script
+- name: REGISTRY - Execute the registry setup script
   script: /root/baremetal/registry.sh
+  tags: 'molecule-notest'
 
-- name: [registry] Create the systemd unit for registry
+- name: REGISTRY - Create the systemd unit for registry
   template:
     src: templates/registry.service.j2
     dest: /etc/systemd/system/registry.service
     mode: 0755
   notify:
-    - Trigger systemctl daemon-reload
     - Enable and start registry service
+
+- meta: flush_handlers
+  tags: 'molecule-notest'

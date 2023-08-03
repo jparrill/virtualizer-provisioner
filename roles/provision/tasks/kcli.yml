@@ -1,25 +1,21 @@
 ---
-- name: [kcli] Enable dnf copr repo called karmab/kcli
-  dnf_repository:
-    name: karmab-kcli
-    description: kcli repository
-    baseurl: https://copr-be.cloud.fedoraproject.org/results/karmab/kcli/fedora-$releasever-$basearch/
-    gpgcheck: no
-    enabled: yes
+- name: KCLI - Enable COPR karmab/kcli repo
+  community.general.copr:
+    name: karmab/kcli
 
-- name: [kcli] Install kcli package from the karmab/kcli repo
+- name: KCLI - Install kcli package from the karmab/kcli repo
   dnf:
     name: kcli
     state: present
 
-- name: [kcli] Create kcli pool
+- name: KCLI - Create kcli pool
   command: kcli create pool -p /var/lib/libvirt/images default
   ignore_errors: yes
 
-- name: [kcli] Create kcli host
+- name: KCLI - Create kcli host
   command: kcli create host kvm -H 127.0.0.1 local
   ignore_errors: yes
 
-- name: [kcli] Create kcli network
+- name: KCLI - Create kcli network
   command: kcli create network -c 192.168.122.0/24 default
   ignore_errors: yes

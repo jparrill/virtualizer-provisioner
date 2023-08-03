@@ -1,0 +1,17 @@
+#!/bin/bash
+
+WEBSRV_FOLDER=/opt/srv
+ROOTFS_IMG="rhcos-414.92.202307050443-0-live-rootfs.x86_64.img"
+LIVE_ISO="rhcos-414.92.202307050443-0-live.x86_64.iso"
+
+mkdir -p ${WEBSRV_FOLDER}
+
+## RootFS
+if [[ ! -f ${WEBSRV_FOLDER}/${ROOTFS_IMG} ]];then
+    wget --no-check-certificate https://releases-rhcos-art.apps.ocp-virt.prod.psi.redhat.com/storage/prod/streams/4.14-9.2/builds/414.92.202307050443-0/x86_64/${ROOTFS_IMG} -O ${WEBSRV_FOLDER}/${ROOTFS_IMG}
+fi
+
+## Live ISO
+if [[ ! -f ${WEBSRV_FOLDER}/${LIVE_ISO} ]];then
+    wget --no-check-certificate https://releases-rhcos-art.apps.ocp-virt.prod.psi.redhat.com/storage/prod/streams/4.14-9.2/builds/414.92.202307050443-0/x86_64/${LIVE_ISO} -O ${WEBSRV_FOLDER}/${LIVE_ISO}
+fi

@@ -8,13 +8,12 @@ driver:
 platforms:
   - name: centos-stream8-hap
     image: quay.io/centos/centos:stream8
-    pre_build_image: true
     privileged: true
-    capabilities:
-      - SYS_ADMIN
-    #volumes:
-    #  - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
 provisioner:
   name: ansible
+  lint:
+    name: ansible-lint
 verifier:
   name: ansible

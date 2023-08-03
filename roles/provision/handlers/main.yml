@@ -4,38 +4,61 @@
   systemd:
     name: podman
     state: started
+    daemon_reload: true
     enabled: yes
+  when:
+    - skip_handlers | default("false") == "false"
 
 - name: Enable and start libvirtd service
   systemd:
     name: libvirtd
     state: started
+    daemon_reload: true
     enabled: yes
-
-- name: Trigger systemctl daemon-reload
-  systemd:
-    state: reloaded
+  when:
+    - skip_handlers | default("false") == "false"
 
 - name: Enable and start dnsmasq-virt service
   systemd:
     name: dnsmasq-virt
     state: started
+    daemon_reload: true
     enabled: yes
+  when:
+    - skip_handlers | default("false") == "false"
 
 - name: Enable and start radvd service
   systemd:
     name: radvd
     state: started
+    daemon_reload: true
     enabled: yes
+  when:
+    - skip_handlers | default("false") == "false"
 
 - name: Enable and start ksushy service
   systemd:
     name: ksushy
     state: started
+    daemon_reload: true
     enabled: yes
+  when:
+    - skip_handlers | default("false") == "false"
 
 - name: Enable and start registry service
   systemd:
     name: registry
     state: started
+    daemon_reload: true
     enabled: yes
+  when:
+    - skip_handlers | default("false") == "false"
+
+- name: Enable and start websrv-ai service
+  systemd:
+    name: websrv-ai
+    state: started
+    daemon_reload: true
+    enabled: yes
+  when:
+    - skip_handlers | default("false") == "false"

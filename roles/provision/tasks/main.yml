@@ -24,3 +24,6 @@
 
 - name: "[main] Install and configure Registry"
   import_tasks: registry.yml
+
+- name: "[main] Install and configure Webserver"
+  import_tasks: webserver.yml

@@ -1,6 +1,8 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    skip_handlers: true
   tasks:
     - name: "Include hap.provision"
       include_role:
