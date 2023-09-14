@@ -23,6 +23,7 @@
     - jq
     - skopeo
     - libseccomp-devel
+    - epel-release
   notify:
     - Enable and start podman service
 

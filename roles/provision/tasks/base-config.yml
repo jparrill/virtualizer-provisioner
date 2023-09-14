@@ -1,9 +1,13 @@
 ---
+- name: BASE - Get the list of services
+  service_facts:
+
 - name: BASE - Install SELinux
   dnf:
     name:
       - selinux-policy
       - python3-libselinux
+      - python3-libsemanage
     state: present
 
 - name: BASE - Configure sysctl for IPv4 and IPv6
@@ -21,9 +25,11 @@
 - name: BASE - Disable SELinux in the current session
   seboolean:
     name: selinuxuser_use_ssh_chroot
-    state: no
-    persistent: yes
+    state: false
+    persistent: true
+  register: msg
   tags: 'molecule-notest'
+  failed_when: false
 
 - name: BASE - Disable SELinux permanently after reboot
   selinux:
@@ -32,10 +38,11 @@
 
 - name: BASE - Stop and disable firewalld service
   systemd:
-    name: firewalld
+    name: firewalld.service
     state: stopped
     enabled: no
   tags: 'molecule-notest'
+  when: ansible_facts['services']['firewalld.service']['status'] != 'not-found'
 
 - name: BASE - Create forcedns dispatcher script
   template:
@@ -44,7 +51,8 @@
     mode: 0755
 
 - name: BASE - Execute the forcedns script
-  script: /etc/NetworkManager/dispatcher.d/forcedns
+  command: /etc/NetworkManager/dispatcher.d/forcedns
+  register: disp
   tags: 'molecule-notest'
 
 - name: BASE - Set the server hostname

@@ -1,6 +1,5 @@
 ---
 ansible_user: root
-remote_user: root
 upstream_dns_01: 10.11.5.160
 upstream_dns_02: 10.2.70.215
 server_fqdn: hypershiftbm.lab

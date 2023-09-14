@@ -11,6 +11,11 @@ A series of ansible playbooks and scripts that prepares 1 to N hypervisors to ho
 - Ansible
 - Molecule
 
+## Execution
+
+```bash
+ansible-playbook -i hosts anygroup.yml
+```
 
 ## Development
 ### Test

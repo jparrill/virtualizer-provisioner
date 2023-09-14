@@ -1,4 +1,9 @@
 ---
+
+- name: REGISTRY - Check podman pods
+  shell: "podman ps -a | grep -q registry"
+  register: out
+
 - name: REGISTRY - Create the registry setup script
   template:
     src: registry_setup.sh.j2
@@ -6,16 +11,19 @@
     mode: 0755
 
 - name: REGISTRY - Execute the registry setup script
-  script: /root/baremetal/registry.sh
+  command: /root/baremetal/registry.sh
   tags: 'molecule-notest'
+  when: "out.rc != 0"
 
 - name: REGISTRY - Create the systemd unit for registry
   template:
     src: templates/registry.service.j2
     dest: /etc/systemd/system/registry.service
     mode: 0755
-  notify:
-    - Enable and start registry service
 
-- meta: flush_handlers
-  tags: 'molecule-notest'
+- name: REGISTRY - Enable and start registry service
+  systemd:
+    name: registry
+    state: started
+    daemon_reload: true
+    enabled: yes
