@@ -16,6 +16,18 @@
   command: kcli create host kvm -H 127.0.0.1 local
   ignore_errors: yes
 
-- name: KCLI - Create kcli network
+- name: KCLI - Create kcli network (Default)
   command: kcli create network -c 192.168.122.0/24 default
+  ignore_errors: yes
+
+- name: KCLI - Create kcli network (IPv6)
+  command: kcli create network -c 2620:52:0:1305::0/64 -P dhcp=false -P dns=false --domain hypershiftbm.lab --nodhcp ipv6
+  ignore_errors: yes
+
+- name: KCLI - Create kcli network (IPv4)
+  command: kcli create network -c 192.168.125.0/24 -P dhcp=false -P dns=false --domain hypershiftbm.lab --nodhcp ipv4
+  ignore_errors: yes
+
+- name: KCLI - Create kcli network (Dual)
+  command: kcli create network -c 192.168.126.0/24 -P dhcp=false -P dns=false -d 2620:52:0:1306::0/64 --domain hypershiftbm.lab --nodhcp dual
   ignore_errors: yes

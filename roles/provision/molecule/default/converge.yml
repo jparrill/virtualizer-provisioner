@@ -4,6 +4,9 @@
   vars:
     skip_handlers: true
   tasks:
+    - ping:
+    - ping:
+      become: true
     - name: "Include hap.provision"
       include_role:
         name: "hap.provision"

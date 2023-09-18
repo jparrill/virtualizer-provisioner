@@ -1,12 +1,17 @@
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
-current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
+current_path := $(abspath $(patsubst %/,%,$(dir $(mkfile_path))))
+provision_path := $(current_path)/roles/provision
 
 all: test syntax
 
 test:
-  cd $(current_dir)/roles/provision
-  molecule converge
+	$(MAKE) -C $(provision_path) converge
+
+destroy:
+	$(MAKE) -C $(provision_path) destroy
 
 syntax:
-  cd $(current_dir)/roles/provision
-  molecule syntax
+	$(MAKE) -C $(provision_path) syntax
+
+reset:
+	$(MAKE) -C $(provision_path) reset
