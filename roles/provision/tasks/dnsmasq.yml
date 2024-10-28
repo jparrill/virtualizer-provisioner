@@ -35,17 +35,17 @@
   notify:
     - Enable and start dnsmasq-virt service
 
-- name: DNSMASQ - Create infra ipv6 file
+- name: DNSMASQ - Create infra dual file
   template:
-    src: templates/infra.ipv6.j2
-    dest: /opt/dnsmasq/include.d/infra.ipv6
+    src: templates/infra.dual.j2
+    dest: /opt/dnsmasq/include.d/infra.dual
 
-- name: DNSMASQ - Create hub ipv6 file
+- name: DNSMASQ - Create hub dual file
   template:
-    src: templates/hub.ipv6.j2
-    dest: /opt/dnsmasq/include.d/hub.ipv6
+    src: templates/hub.dual.j2
+    dest: /opt/dnsmasq/include.d/hub.dual
 
-- name: DNSMASQ - Create hosted ipv6 file
+- name: DNSMASQ - Create hosted dual file
   template:
-    src: templates/hosted.ipv6.j2
-    dest: /opt/dnsmasq/include.d/hosted.ipv6
+    src: templates/hosted.dual.j2
+    dest: /opt/dnsmasq/include.d/hosted.dual

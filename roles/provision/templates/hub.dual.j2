@@ -1,0 +1,17 @@
+host-record=api-int.{{ cluster_name }}.{{ server_fqdn }},{{ dual_ipv4_network }}.10
+host-record=api.{{ cluster_name }}.{{ server_fqdn }},{{ dual_ipv4_network }}.10
+address=/apps.{{ cluster_name }}.{{ server_fqdn }}/{{ dual_ipv4_network }}.11
+dhcp-host=aa:aa:aa:aa:10:01,{{ cluster_name }}-ctlplane-0,{{ dual_ipv4_network }}.20
+dhcp-host=aa:aa:aa:aa:10:02,{{ cluster_name }}-ctlplane-1,{{ dual_ipv4_network }}.21
+dhcp-host=aa:aa:aa:aa:10:03,{{ cluster_name }}-ctlplane-2,{{ dual_ipv4_network }}.22
+dhcp-host=aa:aa:aa:aa:10:06,{{ cluster_name }}-installer,{{ dual_ipv4_network }}.25
+dhcp-host=aa:aa:aa:aa:10:07,{{ cluster_name }}-bootstrap,{{ dual_ipv4_network }}.26
+
+host-record=api-int.{{ cluster_name }}.{{ server_fqdn }},{{ ipv6_network }}::2
+host-record=api.{{ cluster_name }}.{{ server_fqdn }},{{ ipv6_network }}::2
+address=/apps.{{ cluster_name }}.{{ server_fqdn }}/{{ ipv6_network }}::3
+dhcp-host=aa:aa:aa:aa:10:01,{{ cluster_name }}-ctlplane-0,[{{ ipv6_network }}::17]
+dhcp-host=aa:aa:aa:aa:10:02,{{ cluster_name }}-ctlplane-1,[{{ ipv6_network }}::19]
+dhcp-host=aa:aa:aa:aa:10:03,{{ cluster_name }}-ctlplane-2,[{{ ipv6_network }}::1b]
+dhcp-host=aa:aa:aa:aa:10:06,{{ cluster_name }}-installer,[{{ ipv6_network }}::8]
+dhcp-host=aa:aa:aa:aa:10:07,{{ cluster_name }}-bootstrap,[{{ ipv6_network }}::9]

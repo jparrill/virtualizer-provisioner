@@ -1,0 +1,23 @@
+# LoadBalancer (MetalLB)
+host-record=api-int.{{ hosted_cluster_name }}.{{ server_fqdn }},{{ dual_ipv4_network }}.150
+host-record=api.{{ hosted_cluster_name }}.{{ server_fqdn }},{{ dual_ipv4_network }}.150
+host-record=api-int.{{ hosted_cluster_name }}.{{ server_fqdn }},{{ dual_ipv6_network }}::150
+host-record=api.{{ hosted_cluster_name }}.{{ server_fqdn }},{{ dual_ipv6_network }}::150
+address=/apps.{{ hosted_cluster_name }}.{{ server_fqdn }}/{{ dual_ipv4_network }}.160
+address=/apps.{{ hosted_cluster_name }}.{{ server_fqdn }}/{{ dual_ipv6_network }}::160
+
+## General
+dhcp-host=aa:aa:aa:aa:11:01,{{ hosted_cluster_name }}-{{ dual_network_name }}-worker0,{{ dual_ipv4_network }}.30
+dhcp-host=aa:aa:aa:aa:11:02,{{ hosted_cluster_name }}-{{ dual_network_name }}-worker1,{{ dual_ipv4_network }}.31
+dhcp-host=aa:aa:aa:aa:11:03,{{ hosted_cluster_name }}-{{ dual_network_name }}-worker2,{{ dual_ipv4_network }}.32
+dhcp-host=aa:aa:aa:aa:11:01,{{ hosted_cluster_name }}-{{ dual_network_name }}-worker0,[{{ dual_ipv6_network }}::30]
+dhcp-host=aa:aa:aa:aa:11:02,{{ hosted_cluster_name }}-{{ dual_network_name }}-worker1,[{{ dual_ipv6_network }}::31]
+dhcp-host=aa:aa:aa:aa:11:03,{{ hosted_cluster_name }}-{{ dual_network_name }}-worker2,[{{ dual_ipv6_network }}::32]
+
+### Sample of new nodes
+# dhcp-host=aa:aa:aa:aa:12:01,{{ hosted_cluster_name }}-cilium-worker0,{{ dual_ipv4_network }}.34
+# dhcp-host=aa:aa:aa:aa:12:02,{{ hosted_cluster_name }}-cilium-worker1,{{ dual_ipv4_network }}.35
+# dhcp-host=aa:aa:aa:aa:12:03,{{ hosted_cluster_name }}-cilium-worker2,{{ dual_ipv4_network }}.36
+# dhcp-host=aa:aa:aa:aa:12:01,{{ hosted_cluster_name }}-cilium-worker0,[{{ dual_ipv6_network }}::34]
+# dhcp-host=aa:aa:aa:aa:12:02,{{ hosted_cluster_name }}-cilium-worker1,[{{ dual_ipv6_network }}::35]
+# dhcp-host=aa:aa:aa:aa:12:03,{{ hosted_cluster_name }}-cilium-worker2,[{{ dual_ipv6_network }}::36]

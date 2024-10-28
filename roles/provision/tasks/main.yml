@@ -6,24 +6,32 @@
 
 - name: "[main] Configure sysctl for IPv4 and IPv6"
   import_tasks: base-config.yml
+  tags: base
 
 - name: "[main] Install Packages"
   import_tasks: packages.yml
+  tags: pkg
 
 - name: "[main] Install and configure Kcli"
   import_tasks: kcli.yml
+  tags: kcli
 
 - name: "[main] Install and configure dnsmasq"
   import_tasks: dnsmasq.yml
+  tags: dnsmasq
 
 - name: "[main] Install and configure RaDVD"
   import_tasks: radvd.yml
+  tags: radvd
 
 - name: "[main] Install and configure KSushi"
   import_tasks: sushy-emulator.yml
+  tags: ksushy
 
 - name: "[main] Install and configure Registry"
   import_tasks: registry.yml
+  tags: registry
 
 - name: "[main] Install and configure Webserver"
   import_tasks: webserver.yml
+  tags: webserver

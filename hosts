@@ -1,4 +1,4 @@
 [anygroup]
-#test     ansible_host=198.19.249.238
-test-centos ansible_host=centos@orb ansible_user=root
+kaido     ansible_host=10.6.48.46 ansible_user=root
+#test-centos ansible_host=centos@orb ansible_user=root
 

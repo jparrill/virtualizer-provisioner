@@ -3,6 +3,7 @@
 - name: REGISTRY - Check podman pods
   shell: "podman ps -a | grep -q registry"
   register: out
+  ignore_errors: yes
 
 - name: REGISTRY - Create the registry setup script
   template:

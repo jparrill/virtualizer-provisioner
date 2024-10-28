@@ -12,16 +12,16 @@
 - name: Enable and start libvirtd service
   systemd:
     name: libvirtd
-    state: started
+    state: restarted
     daemon_reload: true
     enabled: yes
   when:
     - skip_handlers | default("false") == "false"
 
-- name: Enable and start dnsmasq-virt service
+- name: Enable and restart dnsmasq-virt service
   systemd:
     name: dnsmasq-virt
-    state: started
+    state: restarted
     daemon_reload: true
     enabled: yes
   when:
@@ -30,7 +30,7 @@
 - name: Enable and start radvd service
   systemd:
     name: radvd
-    state: started
+    state: restarted
     daemon_reload: true
     enabled: yes
   when:
@@ -39,7 +39,7 @@
 - name: Enable and start ksushy service
   systemd:
     name: ksushy
-    state: started
+    state: restarted
     daemon_reload: true
     enabled: yes
   when:

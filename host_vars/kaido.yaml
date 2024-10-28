@@ -2,24 +2,7 @@
 ansible_user: root
 upstream_dns_01: 10.11.5.160
 upstream_dns_02: 10.2.70.215
-cluster_name: "hub-dual"
-hosted_cluster_name: "hosted"
-
-ipv4_network_name: "ipv4"
-ipv4_network: "192.168.125"
-ipv4_mask: "24"
-ipv4_mask_address: "255.255.255.0"
-
-ipv6_network_name: "ipv6"
-ipv6_network: "2620:52:0:1305"
-ipv6_mask: "64"
-
-dual_network_name: "dual"
-dual_ipv4_network: "192.168.126"
-dual_ipv4_mask: "24"
-dual_mask_address: "255.255.255.0"
-dual_ipv6_network: "2620:52:0:1306"
-dual_ipv6_mask: "64"
+server_fqdn: hypershiftbm-2.lab
 
 # Instructions:
 # 1. Obtain your Red Hat OpenShift pull secret from https://cloud.redhat.com/openshift/install/pull-secret

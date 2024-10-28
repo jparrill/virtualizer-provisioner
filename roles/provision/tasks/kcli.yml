@@ -21,13 +21,13 @@
   ignore_errors: yes
 
 - name: KCLI - Create kcli network (IPv6)
-  command: kcli create network -c 2620:52:0:1305::0/64 -P dhcp=false -P dns=false --domain hypershiftbm.lab --nodhcp ipv6
+  command: kcli create network -c {{ ipv6_network }}::0/{{ ipv6_mask }} -P dhcp=false -P dns=false --domain {{ server_fqdn }} --nodhcp {{ ipv6_network_name }}
   ignore_errors: yes
 
 - name: KCLI - Create kcli network (IPv4)
-  command: kcli create network -c 192.168.125.0/24 -P dhcp=false -P dns=false --domain hypershiftbm.lab --nodhcp ipv4
+  command: kcli create network -c {{ ipv4_network }}.0/{{ ipv4_mask }} -P dhcp=false -P dns=false --domain {{ server_fqdn }} --nodhcp {{ ipv4_network_name }}
   ignore_errors: yes
 
 - name: KCLI - Create kcli network (Dual)
-  command: kcli create network -c 192.168.126.0/24 -P dhcp=false -P dns=false -d 2620:52:0:1306::0/64 --domain hypershiftbm.lab --nodhcp dual
+  command: kcli create network -c {{ dual_ipv4_network }}.0/{{ dual_ipv4_mask }} -P dhcp=false -P dns=false -d {{ dual_ipv6_network }}::0/{{ dual_ipv6_mask }} --domain {{ server_fqdn }} --nodhcp {{ dual_network_name }}
   ignore_errors: yes
