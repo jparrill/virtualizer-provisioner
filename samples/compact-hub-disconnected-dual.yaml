@@ -1,0 +1,57 @@
+plan: hub-dual
+force: true
+version: stable
+dualstack: true
+tag: 4.16.13
+cluster: "hub-dual"
+#ipv6: true
+domain: hypershiftbm.lab
+api_ip: 192.168.126.10
+ingress_ip: 192.168.126.11
+disconnected_url: registry.hypershiftbm.lab:5000
+disconnected_update: false
+disconnected_user: dummy
+disconnected_password: dummy
+disconnected_operators_version: v4.16
+disconnected_operators:
+- name: metallb-operator
+disk_size: 200
+extra_disks: [200]
+memory: 48000
+numcpus: 16
+ctlplanes: 3
+workers: 0
+manifests: extra-manifests
+metal3: true
+network: dual
+users_dev: developer
+users_devpassword: developer
+users_admin: admin
+users_adminpassword: admin
+metallb_pool: dual-virtual-network
+metallb_ranges:
+- 192.168.126.150-192.168.126.190
+- 2620:52:0:1306::150-2620:52:0:1306::190
+metallb_autoassign: true
+apps:
+- users
+- lvms-operator
+- metallb-operator
+# cmdline: "ip=dhcp"
+vmrules:
+- hub.*-bootstrap:
+    nets:
+    - name: dual
+      mac: aa:aa:aa:aa:10:07
+- hub.*-ctlplane-0:
+    nets:
+    - name: dual
+      mac: aa:aa:aa:aa:10:01
+- hub.*-ctlplane-1:
+    nets:
+    - name: dual
+      mac: aa:aa:aa:aa:10:02
+- hub.*-ctlplane-2:
+    nets:
+    - name: dual
+      mac: aa:aa:aa:aa:10:03

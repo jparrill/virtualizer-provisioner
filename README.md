@@ -28,6 +28,18 @@ You can also execute a concrete part of the playbook
 ansible-playbook -i hosts anygroup.yml --tags kcli
 ```
 
+## What to do afterwards?
+
+- Go to `/root/baremetal/hub`
+- Create a file called `openshift_pull.json` with a valid pull secret
+- Modify and place one of the samples to provision a openshift cluster using kcli
+- Create a openshift cluster using this command:
+
+```bash
+kcli create cluster openshift --pf <KCLI OPENSHIFT CONFIG FILE> --force
+```
+
+
 ## Development
 
 By default I've added a new delegated driver to work with orbstack, this will be used by default. The plan is to add a new driver for Libvirtd to do the same in linux
@@ -56,5 +68,9 @@ make syntax
     - Minio
     - squid
     - ldap
+
+- Add env file
+- Gen ssh key
+- Render samples into hub folder
 
 ## ToFix
