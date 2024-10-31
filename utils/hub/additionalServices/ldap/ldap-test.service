@@ -1,0 +1,14 @@
+[Unit]
+Description=LDAP for testing on OCP Deployments
+After=network.target
+
+[Service]
+User=root
+Group=root
+Restart=always
+ExecStart=/usr/bin/podman start -a ldap-test 
+ExecStop=/usr/bin/podman stop ldap-test
+ExecRestart=/usr/bin/podman stop ldap-test;sleep 5;/usr/bin/podman start -a ldap-test
+
+[Install]
+WantedBy=multi-user.target

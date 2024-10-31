@@ -1,0 +1,18 @@
+---
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfig
+metadata:
+  labels:
+    machineconfiguration.openshift.io/role: master
+  name: 99-worker-mirror-by-digest-registries
+spec:
+  config:
+    ignition:
+      version: 3.1.0
+    storage:
+      files:
+      - contents:
+          source: data:text/plain;charset=utf-8;base64,W1tyZWdpc3RyeV1dCiAgcHJlZml4ID0gIiIKICBsb2NhdGlvbiA9ICJyZWdpc3RyeS5yZWRoYXQuaW8vb3BlbnNoaWZ0NC9vc2Uta3ViZS1yYmFjLXByb3h5IgogIG1pcnJvci1ieS1kaWdlc3Qtb25seSA9IGZhbHNlCgpbW3JlZ2lzdHJ5Lm1pcnJvcl1dCmxvY2F0aW9uID0gInJlZ2lzdHJ5Lmh5cGVyc2hpZnRibS5sYWI6NTAwMC9vcGVuc2hpZnQ0L29zZS1rdWJlLXJiYWMtcHJveHkiCgpbW3JlZ2lzdHJ5XV0KICBwcmVmaXggPSAiIgogIGxvY2F0aW9uID0gInF1YXkuaW8vYWNtLWQiCiAgbWlycm9yLWJ5LWRpZ2VzdC1vbmx5ID0gZmFsc2UKCltbcmVnaXN0cnkubWlycm9yXV0KbG9jYXRpb24gPSAicmVnaXN0cnkuaHlwZXJzaGlmdGJtLmxhYjo1MDAwL2FjbS1kIgoKW1tyZWdpc3RyeV1dCiAgcHJlZml4ID0gIiIKICBsb2NhdGlvbiA9ICJxdWF5LmlvL29wZW4tY2x1c3Rlci1tYW5hZ2VtZW50L2FkZG9uLW1hbmFnZXIiCiAgbWlycm9yLWJ5LWRpZ2VzdC1vbmx5ID0gZmFsc2UKCltbcmVnaXN0cnkubWlycm9yXV0KbG9jYXRpb24gPSAicmVnaXN0cnkuaHlwZXJzaGlmdGJtLmxhYjo1MDAwL29wZW4tY2x1c3Rlci1tYW5hZ2VtZW50L2FkZG9uLW1hbmFnZXIiCg==
+        filesystem: root
+        mode: 420
+        path: /etc/containers/registries.conf.d/99-mirror-by-digest-registries.conf

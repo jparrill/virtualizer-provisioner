@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hypershift-override-images
+  namespace: local-cluster
+data:
+  hypershift-operator: registry.hypershiftbm.lab:5000/jparrill/hypershift:OCPBUGS-29110v1

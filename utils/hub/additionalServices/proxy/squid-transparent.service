@@ -1,0 +1,14 @@
+[Unit]
+Description=Squid proxy OCP Deployments
+After=network.target
+
+[Service]
+User=root
+Group=root
+Restart=always
+ExecStart=/usr/bin/podman start -a squid-transparent
+ExecStop=/usr/bin/podman stop squid-transparent
+ExecRestart=/usr/bin/podman stop squid-transparent;sleep 5;/usr/bin/podman start -a squid-transparent
+
+[Install]
+WantedBy=multi-user.target

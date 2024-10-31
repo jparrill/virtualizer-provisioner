@@ -1,0 +1,19 @@
+---
+apiVersion: hypershift.openshift.io/v1beta1
+kind: NodePool
+metadata:
+  creationTimestamp: null
+  name: hosted-02
+  namespace: clusters
+spec:
+  arch: amd64
+  clusterName: hosted
+  management:
+    autoRepair: true
+    upgradeType: InPlace 
+  nodeDrainTimeout: 0s
+  platform:
+    type: Agent
+  release:
+    image: quay.io/openshift-release-dev/ocp-release:4.14.8-x86_64
+  replicas: 1

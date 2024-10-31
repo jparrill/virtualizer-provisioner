@@ -1,0 +1,47 @@
+---
+apiVersion: oadp.openshift.io/v1alpha1
+kind: DataProtectionApplication
+metadata:
+  name: dpa-instance
+  namespace: openshift-adp
+spec:
+  backupLocations:
+    - name: default
+      velero:
+        provider: aws
+        default: true
+        objectStorage:
+          bucket: jparrill-oadp
+          prefix: hcp
+        config:
+          region: minio
+          profile: "default"
+          s3ForcePathStyle: "true"
+          s3Url: "http://registry.hypershiftbm.lab:9002"
+          insecureSkipTLSVerify: "true"
+        credential:
+          key: cloud
+          name: cloud-credentials
+          default: true
+  snapshotLocations:
+    - velero:
+        provider: aws
+        config:
+          region: minio
+          profile: "default"
+        credential:
+          key: cloud
+          name: cloud-credentials
+  configuration:
+    nodeAgent:
+      enable: true
+      uploaderType: kopia
+    velero:
+      defaultPlugins:
+        - openshift
+        - aws
+        - csi
+          #      customPlugins:
+          #- name: hypershift-velero-plugin
+          #image: quay.io/jparrill/hypershift-velero-plugin:main
+      resourceTimeout: 2h

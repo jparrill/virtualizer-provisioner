@@ -1,0 +1,130 @@
+---
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJjbG91ZC5vcGVuc2hpZnQuY29tIjp7ImF1dGgiOiJiM0JsYm5Ob2FXWjBMWEpsYkdWaGMyVXRaR1YySzIxaGRtRjZjWFZsY21Wa2FHRjBZMjl0TVdWamJYTTNhbTh5YlhKNGNucHRaakZuY210NWVtcGlaVFp4T2s5WU1WaFVVVWxDVjBVNFNVZENPRGxXUTA5U01WVlROazFHVDFWYU1rY3hNa1ZaUnpKUVFVbFdWMEZXVWxoSlVWa3hWMFUyVWs0MVN6TkJOMDlGTVRrPSJ9LCJxdWF5LmlvIjp7ImF1dGgiOiJiM0JsYm5Ob2FXWjBMWEpsYkdWaGMyVXRaR1YySzI5amJWOWhZMk5sYzNOZk1XRmxaVEEwT1dSaE9XWTVOR0pqWVdJMk5XSm1aVFppTkRaaFpqVTJPREE2TlVKSVZqaEVNbGxPVlVnNE9EVlpTVGRSTURWRlVsSlZORXhKUzFKV1VWb3pWVVE0UVV0UlMxaENNbFkxUzFveU0wNDNTVVUzTXpkTU5sazFTRWxCUkE9PSIsImVtYWlsIjoicmZpc2hlckByZWRoYXQuY29tIn0sInF1YXkuaW86NDQzIjp7ImF1dGgiOiJhbkJoY25KcGJHeEFjbVZrYUdGMExtTnZiVG9oYlc5eWRHbHVNVEU9IiwiZW1haWwiOiJqcGFycmlsbEByZWRoYXQuY29tIn0sInJlZ2lzdHJ5LmJ1aWxkMDEuY2kub3BlbnNoaWZ0Lm9yZyI6eyJhdXRoIjoiZFhObGNqcHphR0V5TlRaK1dXcElYeTFJT0V4NGFWcE1aMUJRVnpkc1lXMWFWVUZhZWtOVFkzUkhZVkJQWkdoU09XTkdiMVExYXc9PSJ9LCJyZWdpc3RyeS5idWlsZDAyLmNpLm9wZW5zaGlmdC5vcmciOnsiYXV0aCI6ImRYTmxjanB6YUdFeU5UWitaRlpoTkZCV1NIaFRVVFJ2UVU5NlZubHFlVTl3U2s1U1pYUTJaamxwYzNaYWNtOVJPR1Z2V0VWbFJRPT0ifSwicmVnaXN0cnkuY2kub3BlbnNoaWZ0Lm9yZyI6eyJhdXRoIjoiYzNsemRHVnRMWE5sY25acFkyVmhZMk52ZFc1MExXTnVaaTF4WlMxcGJXRm5aUzF3ZFd4c1pYSTZaWGxLYUdKSFkybFBhVXBUVlhwSk1VNXBTWE5KYlhSd1drTkpOa2xyUm5kVGVrRjBZakJhTkdKWE1VWlVSWFJIVFZNd01GVkVhM2RqYkVFd1VUSldRbFJVWkVSTk1HUlhVa1p3ZG1KR09WbGxhVEZFVVc1TmFXWlJMbVY1U25Cak0wMXBUMmxLY21SWFNteGpiVFZzWkVkV2Vrd3pUbXhqYmxwd1dUSldhRmt5VG5aa1Z6VXdTV2wzYVdFelZtbGFXRXAxV2xoU2JHTjVOWEJpZVRsNldsaEtNbUZYVG14WlYwNXFZak5XZFdSRE9YVlpWekZzWXpOQ2FGa3lWV2xQYVVwcVltMVpkR05YVldsTVEwcHlaRmRLYkdOdE5XeGtSMVo2VEcxc2Rrd3pUbXhqYmxwd1dUSldhRmt5VG5aa1Z6VXdURE5PYkZrelNteGtRelYxV1ZjeGJFbHFiMmxoVnpGb1dqSlZkR05JVm5OaVIxWjVURmhTZG1FeVZuVk1WM2hwWTFoS2FVbHBkMmxoTTFacFdsaEtkVnBZVW14amVUVndZbms1ZWxwWVNqSmhWMDVzV1ZkT2FtSXpWblZrUXpsNldsaEtNbUZYVG14TVYwWnFXVEk1TVdKdVVYVmliVVowV2xOSk5rbHRiSFJaVjJSc1RGaENNV0pIZUd4amFVbHpTVzEwTVZsdFZubGliVll3V2xoTmRXRlhPSFpqTWxaNVpHMXNhbHBYUm1wWk1qa3hZbTVSZG1NeVZubGtiV3hxV2xNeGFGa3lUblprVnpVd1RHNVdjRnBEU1RaSmJWcG9XWHBHYkUxNldUQk1WMUpzV2xkTmRFNUVWVEZPYVRGcFRYcFdha3hVUVRGT2VsSnFUVVJuZDFsNlRUVk9hVWx6U1c1T01WbHBTVFpKYms0MVl6TlNiR0pVY0hwYVdFb3lZVmRPYkZsWFRtcGlNMVoxWkVSd2FtSnRXWFJqVjFVMllWY3hhRm95VlhSalNGWnpZa2RXZVVsdU1DNTVhbGRzT0dFelMyZFZWRjlPWld0S1FXVjFWRTh5UlUxcVJuYzFZVVpsVkdOdGNUUkJOM05YVTNaRk9FSkhMVWd6U3pOa1F6WjFNVVV3U1hGRlUxaGxVRmxpTVdzd1dYRnZNVVZxYWkxdFRXSlhRM3BUUkVweU1EZHpabkJ3TmxZMlRqYzBkVE5ST0d0WVpXdHFUbmhaYmtJd1gwcEJRV3AxV2pJMVFrMW9Vekp3YW1keFNqQnhURUpCWW05M2FtSlBXRVJyV0hacFIwUnBTVnB1YW5OS05XaGZWR0ppWlhSc1RXNXdabEJGVHkxdmFVSXlUVWxaVmpCNFR6Vm1kMFpoT0U0MlRGWkJZMGt6WTI1U09XeEVNa2RVZGxCdFJWTjBZbU4wWkRSUFRUVmpPRkZUYkd4dlYxOUxORlEyTFRkaGJXczJabXBCTTJaRllUZFJibDkxTVV4d05VeHNTV3BVVFV0bFpIUldiRWczVkVkc1VrVTJTRUZXY2pjeVdYQkhTM1Z2Y1VacFRIbENZMmxaVXpkNVprRjRkRFUwV1RSa1dVVnRiSEYxU1c5MVFYQkhSazFJV0ZGTWFsWm9PWEp5ZEdsZk9FRT0ifSwicmVnaXN0cnkuY29ubmVjdC5yZWRoYXQuY29tIjp7ImF1dGgiOiJOVEV3TURZM05qaDhkV2hqTFRGRlEyMVROMnB2TW0xeVdISjZiVVl4UjNKTFdYcEtRa1UyY1RwbGVVcG9Za2RqYVU5cFNsTlZlbFY0VFdsS09TNWxlVXA2WkZkSmFVOXBTVEZhUkZwcFdWUmtiRTlVUVhwYVZHY3dUV3BGZDFsVVVYaFpla0Y2VDBST2FsbDZTbWxPVjFFd1drTktPUzV2VGxRdFVGZzBkRWxGT1dOdE4wUlZiVTFtVkROSk0xRjJkVUkwWW5CWFJFOVVUMjgzVUVGTlZURnFYM0JSVW5abFNHMWpSalo0TUZSWFltMHhaWFJoTFROVFpXRm1RbFpsYWt4NFJVeFZXVzlQVWtVek5GVklRMUUxWkdVMlJtbE9iR3BGY25JM2NURTFWV1JoWkhwYWJEaGFRVWQyTkUxVU9VUjRhWEU0WTNGNWQxRmFRVEYzT0RkNWVuQm1RbE55T1hSbVpUVXlWQzFpYVRGbE0xUkZhSGRxYm1WV2EwVlFSV3hIY3pjdE0yeFpTMnRyTTFWS1NEUkhOakZHV2xOblZuaHJOa1JQVDBSemVYUjNZMVphYkVkZk56bFBaSEEyU1ZGU2NUSjZTVnBFZVd4YVlVNVJUWEJqZUROQ1ZUQjBiR2M0V25FMFFqbGthV1EwVTJ4eE5qTnpOR1kzUjFkUFdqWnhSV1pxWTNOUUxWbHpNVjgzTFVNelkyZEZXRkJxTlc1MWRGZHlTbXQwUlZZeFoyMUZlVEIwYXpoQk5YTjFiRk4xUlc5eFZVeFRXVEZ3TUdFM05XeFhjVkV0YldocGJUTmhSazUxVHpoRmFuTnBaVU5uUms1dE5uZFlNemRrUldWa1IxVjVaazVDWkc1eExUZGtTMVpVTWtORmF6Wk9kM2hNTFVNeVRVdDFXR2hoTW1kUWRraHBRMDVNVDBKdlVuUnRjVWxQT1hOc1pGSXRUbFZwVWpOVk1sOUxXREl0ZDE5Sk1FaG5abHBWWTFRd2RrUm9RVmt4TnpCQ2IzcERkMGhhYUd3M1JrRmpTM1UyV214amJHdHllVFZGTW5wTk9HRjJNMUE1YUMxRFducGFWbkJVUTFocUxXSkpVR1ZTWDJwRlJtMXNiRzlDTld4cGVYcHZUMVJuUkRSVlN6bHJjbXBmVUhkWldYcE9TRzVvT1VsYVZXcE5iSGxtYXpkcVVIRkhNMmhaYzFWeVpFcE5VVzA1TkRKSk1WaFFNMGxpVkdGS2NYQkllSGRZZG1GM1ZXWldNVFozVTNkTE9EWmZOeTFwTFhab2RuWllkVkpqVldaNmRISTBMV28zYzJKT1Ewd3dORXBRY1V0blFuVjFVMnRmVm5aeGVrVjZZbk5aYjNSRWVrRXRlakl5WkVaNVNVSkhSMnBuU0UxVlJuSlJibWxrY21remNFd3dRUT09In0sInJlZ2lzdHJ5LnJlZGhhdC5pbyI6eyJhdXRoIjoiTlRFd01EWTNOamg4ZFdoakxURkZRMjFUTjJwdk1tMXlXSEo2YlVZeFIzSkxXWHBLUWtVMmNUcGxlVXBvWWtkamFVOXBTbE5WZWxWNFRXbEtPUzVsZVVwNlpGZEphVTlwU1RGYVJGcHBXVlJrYkU5VVFYcGFWR2N3VFdwRmQxbFVVWGhaZWtGNlQwUk9hbGw2U21sT1YxRXdXa05LT1M1dlRsUXRVRmcwZEVsRk9XTnROMFJWYlUxbVZETkpNMUYyZFVJMFluQlhSRTlVVDI4M1VFRk5WVEZxWDNCUlVuWmxTRzFqUmpaNE1GUlhZbTB4WlhSaExUTlRaV0ZtUWxabGFreDRSVXhWV1c5UFVrVXpORlZJUTFFMVpHVTJSbWxPYkdwRmNuSTNjVEUxVldSaFpIcGFiRGhhUVVkMk5FMVVPVVI0YVhFNFkzRjVkMUZhUVRGM09EZDVlbkJtUWxOeU9YUm1aVFV5VkMxaWFURmxNMVJGYUhkcWJtVldhMFZRUld4SGN6Y3RNMnhaUzJ0ck0xVktTRFJITmpGR1dsTm5WbmhyTmtSUFQwUnplWFIzWTFaYWJFZGZOemxQWkhBMlNWRlNjVEo2U1ZwRWVXeGFZVTVSVFhCamVETkNWVEIwYkdjNFduRTBRamxrYVdRMFUyeHhOak56TkdZM1IxZFBXalp4UldacVkzTlFMVmx6TVY4M0xVTXpZMmRGV0ZCcU5XNTFkRmR5U210MFJWWXhaMjFGZVRCMGF6aEJOWE4xYkZOMVJXOXhWVXhUV1RGd01HRTNOV3hYY1ZFdGJXaHBiVE5oUms1MVR6aEZhbk5wWlVOblJrNXRObmRZTXpka1JXVmtSMVY1Wms1Q1pHNXhMVGRrUzFaVU1rTkZhelpPZDNoTUxVTXlUVXQxV0doaE1tZFFka2hwUTA1TVQwSnZVblJ0Y1VsUE9YTnNaRkl0VGxWcFVqTlZNbDlMV0RJdGQxOUpNRWhuWmxwVlkxUXdka1JvUVZreE56QkNiM3BEZDBoYWFHdzNSa0ZqUzNVMldteGpiR3R5ZVRWRk1ucE5PR0YyTTFBNWFDMURXbnBhVm5CVVExaHFMV0pKVUdWU1gycEZSbTFzYkc5Q05XeHBlWHB2VDFSblJEUlZTemxyY21wZlVIZFpXWHBPU0c1b09VbGFWV3BOYkhsbWF6ZHFVSEZITTJoWmMxVnlaRXBOVVcwNU5ESkpNVmhRTTBsaVZHRktjWEJJZUhkWWRtRjNWV1pXTVRaM1UzZExPRFpmTnkxcExYWm9kblpZZFZKalZXWjZkSEkwTFdvM2MySk9RMHd3TkVwUWNVdG5RblYxVTJ0ZlZuWnhla1Y2WW5OWmIzUkVla0V0ZWpJeVpFWjVTVUpIUjJwblNFMVZSbkpSYm1sa2Nta3pjRXd3UVE9PSJ9LCJyZWdpc3RyeS5oeXBlcnNoaWZ0Ym0ubGFiOjUwMDAiOnsiYXV0aCI6IlpIVnRiWGs2WkhWdGJYaz0iLCJlbWFpbCI6ImpwYXJyaWxsQHJlZGhhdC5jb20ifSwicmVnaXN0cnkuaHlwZXJzaGlmdGJtLmxhYiI6eyJhdXRoIjoiWkhWdGJYazZaSFZ0YlhrPSIsImVtYWlsIjoianBhcnJpbGxAcmVkaGF0LmNvbSJ9fX0K
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: hosted-pull-secret
+  namespace: clusters
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: clusters-hosted
+spec: {}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sshkey-cluster-hosted
+  namespace: clusters
+stringData:
+  id_rsa.pub: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDk7ICaUE+/k4zTpxLk4+xFdHi4ZuDi5qjeF52afsNkw0w/glILHhwpL5gnp5WkRuL8GwJuZ1VqLC9EKrdmegn4MrmUlq7WTsP0VFOZFBfq2XRUxo1wrRdor2z0Bbh93ytR+ZsDbbLlGngXaMa0Vbt+z74FqlcajbHTZ6zBmTpBVq5RHtDPgKITdpE1fongp7+ZXQNBlkaavaqv8bnyrP4BWahLP4iO9/xJF9lQYboYwEEDzmnKLMW1VtCE6nJzEgWCufACTbxpNS7GvKtoHT/OVzw8ArEXhZXQUS1UY8zKsX2iXwmyhw5Sj6YboA8WICs4z+TrFP89LmxXY0j6536TQFyRz1iB4WWvCbH5n6W+ABV2e8ssJB1AmEy8QYNwpJQJNpSxzoKBjI73XxvPYYC/IjPFMySwZqrSZCkJYqQ023ySkaQxWZT7in4KeMu7eS2tC+Kn4deJ7KwwUycx8n6RHMeD8Qg9flTHCv3gmab8JKZJqN3hW1D378JuvmIX4V0= 
+---
+apiVersion: hypershift.openshift.io/v1beta1
+kind: HostedCluster
+metadata:
+  creationTimestamp: null
+  name: hosted
+  namespace: clusters
+  #annotations:
+  #  hypershift.openshift.io/control-plane-operator-image: registry.hypershiftbm.lab:5000/jparrill/hypershift:main-latestv2
+spec:
+  controllerAvailabilityPolicy: SingleReplica
+  dns:
+    baseDomain: hypershiftbm.lab
+  etcd:
+    managed:
+      storage:
+        persistentVolume:
+          size: 8Gi
+        restoreSnapshotURL: null
+        type: PersistentVolume
+    managementType: Managed
+  fips: false
+  networking:
+    clusterNetwork:
+    - cidr: 10.132.0.0/14
+    - cidr: fd01::/48
+    networkType: OVNKubernetes
+    serviceNetwork:
+    - cidr: 172.31.0.0/16
+    - cidr: fd02::/112
+  platform:
+    agent:
+      agentNamespace: clusters-hosted
+    type: Agent
+  pullSecret:
+    name: hosted-pull-secret
+  release:
+    image: quay.io/openshift-release-dev/ocp-release:4.16.17-multi
+  secretEncryption:
+    aescbc:
+      activeKey:
+        name: hosted-etcd-encryption-key
+    type: aescbc
+  services:
+  - service: APIServer
+    servicePublishingStrategy:
+      type: LoadBalancer
+      loadBalancer:
+        hostname: "api.hosted.hypershiftbm.lab"
+  - service: OAuthServer
+    servicePublishingStrategy:
+      type: Route
+  - service: OIDC
+    servicePublishingStrategy:
+      type: Route
+  - service: Konnectivity
+    servicePublishingStrategy:
+      type: Route
+  - service: Ignition
+    servicePublishingStrategy:
+      type: Route
+  sshKey:
+    name: sshkey-cluster-hosted
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: null
+  name: capi-provider-role
+  namespace: clusters-hosted
+rules:
+- apiGroups:
+  - agent-install.openshift.io
+  resources:
+  - agents
+  verbs:
+  - '*'
+---
+apiVersion: v1
+data:
+  key: nTPtVBEt03owkrKhIdmSW8jrWRxU57KO/fnZa8oaG0Y=
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: hosted-etcd-encryption-key
+  namespace: clusters
+type: Opaque
+---
+apiVersion: hypershift.openshift.io/v1beta1
+kind: NodePool
+metadata:
+  creationTimestamp: null
+  name: hosted
+  namespace: clusters
+spec:
+  arch: amd64
+  clusterName: hosted
+  management:
+    autoRepair: false
+    upgradeType: InPlace 
+  nodeDrainTimeout: 0s
+  platform:
+    type: Agent
+  release:
+    image: quay.io/openshift-release-dev/ocp-release:4.16.17-multi
+  replicas: 2

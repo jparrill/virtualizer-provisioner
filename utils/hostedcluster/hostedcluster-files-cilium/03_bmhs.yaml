@@ -1,0 +1,86 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hosted-cilium-worker0-bmc-secret
+  namespace: clusters-hosted
+data:
+  password: YWRtaW4=
+  username: YWRtaW4=
+type: Opaque
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hosted-cilium-worker1-bmc-secret
+  namespace: clusters-hosted
+data:
+  password: YWRtaW4=
+  username: YWRtaW4=
+type: Opaque
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hosted-cilium-worker2-bmc-secret
+  namespace: clusters-hosted
+data:
+  password: YWRtaW4=
+  username: YWRtaW4=
+type: Opaque
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: hosted-cilium-worker0
+  namespace: clusters-hosted
+  labels:
+    infraenvs.agent-install.openshift.io: hosted
+  annotations:
+    inspect.metal3.io: disabled
+    bmac.agent-install.openshift.io/hostname: hosted-cilium-worker0
+spec:
+  automatedCleaningMode: disabled
+  bmc:
+    disableCertificateVerification: True
+    address: redfish-virtualmedia://192.168.126.1:9000/redfish/v1/Systems/local/hosted-cilium-worker0
+    credentialsName: hosted-cilium-worker0-bmc-secret
+  bootMACAddress: aa:aa:aa:aa:12:01
+  online: true
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: hosted-cilium-worker1
+  namespace: clusters-hosted
+  labels:
+    infraenvs.agent-install.openshift.io: hosted
+  annotations:
+    inspect.metal3.io: disabled
+    bmac.agent-install.openshift.io/hostname: hosted-cilium-worker1
+spec:
+  automatedCleaningMode: disabled
+  bmc:
+    disableCertificateVerification: True
+    address: redfish-virtualmedia://192.168.126.1:9000/redfish/v1/Systems/local/hosted-cilium-worker1
+    credentialsName: hosted-cilium-worker1-bmc-secret
+  bootMACAddress: aa:aa:aa:aa:12:02
+  online: true
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: hosted-cilium-worker2
+  namespace: clusters-hosted
+  labels:
+    infraenvs.agent-install.openshift.io: hosted
+  annotations:
+    inspect.metal3.io: disabled
+    bmac.agent-install.openshift.io/hostname: hosted-cilium-worker2
+spec:
+  automatedCleaningMode: disabled
+  bmc:
+    disableCertificateVerification: True
+    address: redfish-virtualmedia://192.168.126.1:9000/redfish/v1/Systems/local/hosted-cilium-worker2
+    credentialsName: hosted-cilium-worker2-bmc-secret
+  bootMACAddress: aa:aa:aa:aa:12:03
+  online: true

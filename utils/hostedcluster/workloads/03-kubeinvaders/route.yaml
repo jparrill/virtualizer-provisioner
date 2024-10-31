@@ -1,0 +1,15 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: kubeinvaders
+  namespace: "kubeinvaders"
+spec:
+  host: "kubeinvaders.apps.hosted.hypershiftbm.lab"
+  port:
+    targetPort: 8080
+  to:
+    name: kubeinvaders
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: Edge

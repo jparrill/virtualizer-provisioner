@@ -1,0 +1,245 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: clusters
+spec: {}
+---
+apiVersion: v1
+data:
+  ca-bundle.crt: |
+    -----BEGIN CERTIFICATE-----
+    MIIGAzCCA+ugAwIBAgIURZy+Z7jWHeR9HTFNGbAnJz4LtgQwDQYJKoZIhvcNAQEL
+    BQAwfjELMAkGA1UEBhMCVVMxDzANBgNVBAgMBk1hZHJpZDEVMBMGA1UEBwwMU2Fu
+    IEJlcm5hcmRvMRIwEAYDVQQKDAlLYXJtYWxhYnMxDzANBgNVBAsMBkd1aXRhcjEi
+    MCAGA1UEAwwZcmVnaXN0cnkuaHlwZXJzaGlmdGJtLmxhYjAeFw0yMzA5MTQxNTA2
+    MzBaFw0zMzA5MTExNTA2MzBaMH4xCzAJBgNVBAYTAlVTMQ8wDQYDVQQIDAZNYWRy
+    aWQxFTATBgNVBAcMDFNhbiBCZXJuYXJkbzESMBAGA1UECgwJS2FybWFsYWJzMQ8w
+    DQYDVQQLDAZHdWl0YXIxIjAgBgNVBAMMGXJlZ2lzdHJ5Lmh5cGVyc2hpZnRibS5s
+    YWIwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQCkh8UMPQW9VKjDLRO5
+    yqELUrB9v/2j/UiIKW+d/g2kFWx5tJHZAkIQDkSnUhRP5CkmEyr9CpxUpgoN+Vrb
+    +bBi76Wm0ly5ZufAw440B2SL+Jdgo8FumLkjNqFN90vqewMEzKfAqgK2ZhctKBsY
+    v+7i9ipzPmYR8J6W2JbjTD9FWJoV41oICOHOHc2brNIoJ5GfVmksQO5r9QFREU/a
+    f0p44YkyMxAFZ0mNhU1/5GAxXWw9YTdaYhKzRMuGofzBToXdlP6OE11Z0nMxAyNW
+    7wCQs9B9vox+bk276xFtBzKFON9w6nRf8ueNdlepRATRTeLkj2R2idb5MBdORt01
+    8RJCt4jG79w6T2HlUDdc59TCThedeAqZmXkRZ7vkrUqN8en6hWF3PVodkUZK3mnR
+    F/konvIM1XLq5woghDKyk2655mNKo2ieBsnnPZLWHVf40GiiKxGU1fVzm9nvbzzo
+    gjacSBLDUZqRAi6qVfx1w8q74EtUbSWEitQ/ybyj+VDg99AfsUArjZUuuSSFgq5t
+    Mhlsvtv1KyLjXvQD3d1V4ebgtPv5+sAWxnZxFG6i1JOruYCHPHYENfYZXVJV8qVx
+    qwzcqGNKsRekjAFXsj3oR9GgXoIbX/zDTrzqh5UNvJUMkDZaSOx8m4HniGjaepD3
+    XwXkvSs2JWXa2swNySNEAVRQ9wIDAQABo3kwdzAdBgNVHQ4EFgQUFMbnyvJGMo44
+    kcHvlPLG9wgJvWQwHwYDVR0jBBgwFoAUFMbnyvJGMo44kcHvlPLG9wgJvWQwDwYD
+    VR0TAQH/BAUwAwEB/zAkBgNVHREEHTAbghlyZWdpc3RyeS5oeXBlcnNoaWZ0Ym0u
+    bGFiMA0GCSqGSIb3DQEBCwUAA4ICAQChI3571nVpghyVnAyFfai6eppqWTDUIDir
+    wJltTWsn595KYrQg9fhjBKXZOWYXgA+smUyr5oUxQRjj8g/EAdak2iT4640Wrvwe
+    R8eBsv9oUyAEFu2b85uocMivaKccq9AHAIQRNpK67xXy5CR6+w8UAlfqv+tXhGf8
+    abki1mxDW2ZgFltJpU5GZByOnMlHY1sAHBM6X/VIaB5k6+cDpi7ZbWnG/vgzUhzK
+    HPRyiwOtWFER2RXF0DU2nSF2CspYTP+A5W94J90t8WZqeP3yh2hww8SQSj0eqaZm
+    P0L5UNBTOQXBnmfDmKl7coEWa1oJz53gwBb/20q5cgs2iTJ28yCErJYo31DE7Rx9
+    v4WLium2nQEMHAL4098EE4DK57aaH+IpIMtSJBMLKer/yp0jxZzudoMvWm2Vg+qT
+    nHNV0nqs+KmjohbDVd1qIoqeuVL707nM0qlMPnXNyLM53YMDD9iwWyZQCZUIvErw
+    DfhbTgA+6Rof1OHK5Hl8PbteMiSblnPwrjhVNjPpSThKaaWAStEYpQMtMbSiJsp8
+    WauYLuNPrZCNoPNX1Meeh6WwJN+vpVA9JklmOCPMQqbN+NMMMaUq5h5r114FAO+A
+    Kr4krXAlaCtsQ5c9KbWYf29I+iuoKxA/zcYgTGyVmoEEZHyfzfnP9oCV0sCpWbet
+    LtDbTGdPaw==
+    -----END CERTIFICATE-----
+
+    -----BEGIN CERTIFICATE-----
+    MIIDsTCCApmgAwIBAgIJAJ2I64lqethXMA0GCSqGSIb3DQEBCwUAMG8xCzAJBgNV
+    BAYTAkVTMQ4wDAYDVQQIDAVTcGFpbjEPMA0GA1UEBwwGTWFkcmlkMQ8wDQYDVQQK
+    DAZSZWRIYXQxEzARBgNVBAsMCkh5cGVyc2hpZnQxGTAXBgNVBAMMEGh5cGVyc2hp
+    ZnRibS5sYWIwHhcNMjQwNjEyMTMyNDU0WhcNMzQwNjEwMTMyNDU0WjBvMQswCQYD
+    VQQGEwJFUzEOMAwGA1UECAwFU3BhaW4xDzANBgNVBAcMBk1hZHJpZDEPMA0GA1UE
+    CgwGUmVkSGF0MRMwEQYDVQQLDApIeXBlcnNoaWZ0MRkwFwYDVQQDDBBoeXBlcnNo
+    aWZ0Ym0ubGFiMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyZANDTLr
+    kiiQ6u9+INiH1GnLo/GfMWTMX4pRChY/ZvChmj21gwHY5cylfDi5gv9bTnggdmwx
+    aNdBH1oM2NJyfBoi0yhfx3S5xdQ/QT5DW6HOLLehrKpJz1fthcs9rmQ6QsyfA/RY
+    z/U0lma7rsHl1wRlrW9L1jy7ryx9QcpSS/VkeYMkES83XQ5LcQDBqX7QkrHxh6Ak
+    +FEMvZZBxJ1bn5AIAAu/dGuHDfgFy6+Qzicc+9YLAbQZvGdiOvlMd4xkBI2ZVC+I
+    OFUR0Mwauapm65+7b5kAPuWVgvLb48Tj8r0MVKMG+MHTe4k2nyT9cPGwH/0k7DbF
+    g2zko12MI5+yJQIDAQABo1AwTjAdBgNVHQ4EFgQUr3O+TvAm9r3QcAoWcWU9kaYU
+    DK0wHwYDVR0jBBgwFoAUr3O+TvAm9r3QcAoWcWU9kaYUDK0wDAYDVR0TBAUwAwEB
+    /zANBgkqhkiG9w0BAQsFAAOCAQEAbtFJx+8sJSoipN5JngigTfmT1b4MFBvAWeRn
+    iDPdPKfJyhyZ0QXOmJYwbEYLYD2oFcrHZqbnfo14XFtu6mthL+FF0PdyQybv28Yl
+    a0S+G1qbF8vyooZ69y0/EGPy1UJoHP7Yl/F9/OkKGe0FjqBA5LHhWWsVnkuNdm5z
+    WQW1JtS/xDrUJA/7Hzu/Ezk9lFw084eItmJCtZ7FgzKzDT6Q4vwrgnkwQUAeh8pp
+    cmKg6+jKeHwxBNCCtiDxCcMozX7ZPuEOkyZwYfsSglrM0fNQjv4tdO4W9DUjald+
+    4bOOC3GorphleX9rDoJBrGhs7XfYf3hx3YizaM/FtG1QqwKCMA==
+    -----END CERTIFICATE-----
+kind: ConfigMap
+metadata:
+  name: user-ca-bundle
+  namespace: clusters
+---
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJyZWdpc3RyeS5oeXBlcnNoaWZ0Ym0ubGFiOjUwMDAiOnsiYXV0aCI6IlpIVnRiWGs2WkhWdGJYaz0iLCJlbWFpbCI6ImpwYXJyaWxsQHJlZGhhdC5jb20ifX19Cg== 
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: hosted-pull-secret
+  namespace: clusters
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sshkey-cluster-hosted
+  namespace: clusters
+stringData:
+  id_rsa.pub: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDk7ICaUE+/k4zTpxLk4+xFdHi4ZuDi5qjeF52afsNkw0w/glILHhwpL5gnp5WkRuL8GwJuZ1VqLC9EKrdmegn4MrmUlq7WTsP0VFOZFBfq2XRUxo1wrRdor2z0Bbh93ytR+ZsDbbLlGngXaMa0Vbt+z74FqlcajbHTZ6zBmTpBVq5RHtDPgKITdpE1fongp7+ZXQNBlkaavaqv8bnyrP4BWahLP4iO9/xJF9lQYboYwEEDzmnKLMW1VtCE6nJzEgWCufACTbxpNS7GvKtoHT/OVzw8ArEXhZXQUS1UY8zKsX2iXwmyhw5Sj6YboA8WICs4z+TrFP89LmxXY0j6536TQFyRz1iB4WWvCbH5n6W+ABV2e8ssJB1AmEy8QYNwpJQJNpSxzoKBjI73XxvPYYC/IjPFMySwZqrSZCkJYqQ023ySkaQxWZT7in4KeMu7eS2tC+Kn4deJ7KwwUycx8n6RHMeD8Qg9flTHCv3gmab8JKZJqN3hW1D378JuvmIX4V0= 
+---
+apiVersion: hypershift.openshift.io/v1beta1
+kind: HostedCluster
+metadata:
+  creationTimestamp: null
+  name: hosted
+  namespace: clusters
+  #annotations:
+  #  hypershift.openshift.io/control-plane-operator-image: registry.hypershiftbm.lab:5000/jparrill/hypershift:main-latestv2
+spec:
+  configuration:
+    operatorhub:
+      disableAllDefaultSources: true
+  additionalTrustBundle:
+    name: user-ca-bundle
+  # Required to run OLM on the hosted cluster data plane rather than in the control plane
+  olmCatalogPlacement: guest
+  imageContentSources:
+  - source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
+    mirrors:
+    - registry.hypershiftbm.lab:5000/openshift/release
+  - source: quay.io/openshift-release-dev/ocp-release
+    mirrors:
+    - registry.hypershiftbm.lab:5000/openshift/release-images 
+  - mirrors:
+    - registry.hypershiftbm.lab:5000/openshift/release
+    source: registry.build03.ci.openshift.org/ci-ln-7mxtvht/release
+  - mirrors:
+    - registry.hypershiftbm.lab:5000/openshift/release-images
+    source: registry.build03.ci.openshift.org/ci-ln-7mxtvht/stable
+  - source: registry.redhat.io/multicluster-engine
+    mirrors:
+    - registry.hypershiftbm.lab:5000/multicluster-engine
+  - source: registry.redhat.io/rhel8
+    mirrors:
+    - registry.hypershiftbm.lab:5000/rhel8
+  - source: registry.hypershiftbm.lab:5000/rhacm2
+    mirrors:
+    - registry.redhat.io/rhacm2
+  - source: registry.redhat.io/openshift4
+    mirrors:
+    - registry.hypershiftbm.lab:5000/openshift4
+  - source: registry.redhat.io/lvms4
+    mirrors:
+    - registry.hypershiftbm.lab:5000/lvms4
+  - source: quay.io/edge-infrastructure
+    mirrors:
+    - registry.hypershiftbm.lab:5000/edge-infrastructure
+  - source: quay.io/openshift-community-operators
+    mirrors:
+    - registry.hypershiftbm.lab:5000/openshift-community-operators
+  - source: quay.io/openshift-hive
+    mirrors:
+    - registry.hypershiftbm.lab:5000/openshift-hive
+  - source: quay.io/ocpmetal
+    mirrors:
+    - registry.hypershiftbm.lab:5000/ocpmetal
+  - source: quay.io/app-sre
+    mirrors:
+    - registry.hypershiftbm.lab:5000/app-sre
+  autoscaling: {}
+  controllerAvailabilityPolicy: SingleReplica
+  dns:
+    baseDomain: hypershiftbm.lab
+  etcd:
+    managed:
+      storage:
+        persistentVolume:
+          size: 8Gi
+        restoreSnapshotURL: null
+        type: PersistentVolume
+    managementType: Managed
+  fips: false
+  networking:
+    clusterNetwork:
+    - cidr: 10.132.0.0/14
+    - cidr: fd01::/48
+    networkType: OVNKubernetes
+    serviceNetwork:
+    - cidr: 172.31.0.0/16
+    - cidr: fd02::/112
+  platform:
+    agent:
+      agentNamespace: clusters-hosted
+    type: Agent
+  pullSecret:
+    name: hosted-pull-secret
+  release:
+    image: quay.io/openshift-release-dev/ocp-release:4.17.1-x86_64 
+  secretEncryption:
+    aescbc:
+      activeKey:
+        name: hosted-etcd-encryption-key
+    type: aescbc
+  services:
+  - service: APIServer
+    servicePublishingStrategy:
+      type: LoadBalancer
+  - service: OAuthServer
+    servicePublishingStrategy:
+      type: Route
+  - service: OIDC
+    servicePublishingStrategy:
+      type: Route
+  - service: Konnectivity
+    servicePublishingStrategy:
+      type: Route
+  - service: Ignition
+    servicePublishingStrategy:
+      type: Route
+  sshKey:
+    name: sshkey-cluster-hosted
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: null
+  name: capi-provider-role
+  namespace: clusters-hosted
+rules:
+- apiGroups:
+  - agent-install.openshift.io
+  resources:
+  - agents
+  verbs:
+  - '*'
+---
+apiVersion: v1
+data:
+  key: nTPtVBEt03owkrKhIdmSW8jrWRxU57KO/fnZa8oaG0Y=
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: hosted-etcd-encryption-key
+  namespace: clusters
+type: Opaque
+---
+apiVersion: hypershift.openshift.io/v1beta1
+kind: NodePool
+metadata:
+  creationTimestamp: null
+  name: hosted
+  namespace: clusters
+spec:
+  arch: amd64
+  clusterName: hosted
+  management:
+    autoRepair: false
+    upgradeType: InPlace 
+  nodeDrainTimeout: 0s
+  platform:
+    type: Agent
+  release:
+    image: quay.io/openshift-release-dev/ocp-release:4.17.1-x86_64 
+  replicas: 2

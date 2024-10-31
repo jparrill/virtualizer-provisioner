@@ -1,0 +1,23 @@
+apiVersion: cilium.io/v1alpha1
+kind: CiliumConfig
+metadata:
+  name: cilium
+  namespace: cilium
+spec:
+  cni:
+    binPath: /var/lib/cni/bin
+    confPath: /var/run/multus/cni/net.d
+  hubble:
+    tls:
+      enabled: false
+  ipam:
+    mode: cluster-pool
+    operator:
+      clusterPoolIPv4MaskSize: "23"
+      clusterPoolIPv4PodCIDRList: 10.132.0.0/14
+  prometheus:
+    serviceMonitor:
+      enabled: false
+  securityContext:
+    privileged: true
+  sessionAffinity: true

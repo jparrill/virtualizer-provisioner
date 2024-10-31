@@ -1,0 +1,53 @@
+---
+# ImageSetConfig for oc-mirror V2 flow
+apiVersion: mirror.openshift.io/v2alpha1
+kind: ImageSetConfiguration
+mirror:
+  platform:
+    kubeVirtContainer: true
+    channels:
+    - name: stable-4.16
+      minVersion: 4.16.12
+      maxVersion: 4.16.13
+    - name: candidate-4.17
+      minVersion: 4.17.1
+      maxVersion: 4.17.1
+    - name: candidate-4.18
+      minVersion: 4.18.0-ec.2
+      maxVersion: 4.18.0-ec.2
+  additionalImages:
+  - name: quay.io/karmab/origin-keepalived-ipfailover:latest
+  - name: quay.io/karmab/kubectl:latest
+  - name: quay.io/karmab/haproxy:latest
+  - name: quay.io/karmab/mdns-publisher:latest
+  - name: quay.io/karmab/origin-coredns:latest
+  - name: quay.io/karmab/curl:latest
+  - name: quay.io/karmab/kcli:latest
+  - name: quay.io/mavazque/trbsht:latest
+  - name: registry.redhat.io/openshift4/ose-kube-rbac-proxy:v4.10
+  - name: quay.io/jparrill/hypershift-velero-plugin:main
+  operators:
+  - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.15
+    packages:
+    - name: lvms-operator
+    - name: local-storage-operator
+    - name: odf-csi-addons-operator
+    - name: odf-operator
+    - name: mcg-operator
+    - name: ocs-operator
+    - name: metallb-operator
+    - name: multicluster-engine
+    - name: redhat-oadp-operator
+    - name: kubevirt-hyperconverged
+  - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.16
+    packages:
+    - name: lvms-operator
+    - name: local-storage-operator
+    - name: odf-csi-addons-operator
+    - name: odf-operator
+    - name: mcg-operator
+    - name: ocs-operator
+    - name: metallb-operator
+    - name: multicluster-engine
+    - name: redhat-oadp-operator
+    - name: kubevirt-hyperconverged

@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hypershift-operator-install-flags
+  namespace: local-cluster
+data:
+  installFlagsToAdd: --enable-defaulting-webhook true
+  installFlagsToRemove: --enable-uwm-telemetry-remote-write

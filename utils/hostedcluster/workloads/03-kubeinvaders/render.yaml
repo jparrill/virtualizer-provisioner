@@ -1,0 +1,172 @@
+---
+# Source: kubeinvaders/templates/rbac-cluster.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kubeinvaders
+  labels:
+    app: kubeinvaders
+    chart: kubeinvaders-1.9.6
+    release: kubeinvaders
+    heritage: Helm
+rules:
+- apiGroups: [""]
+  resources: ["pods", "pods/log"]
+  verbs: ["delete"]
+- apiGroups: ["batch", "extensions"]
+  resources: ["jobs"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["get", "watch", "list"]
+---
+# Source: kubeinvaders/templates/rbac-cluster.yaml
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kubeinvaders
+  labels:
+    app: kubeinvaders
+    chart: kubeinvaders-1.9.6
+    release: kubeinvaders
+    heritage: Helm
+subjects:
+- kind: ServiceAccount
+  name: kubeinvaders
+  namespace: kubeinvaders
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kubeinvaders
+---
+# Source: kubeinvaders/templates/rbac.yaml
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kubeinvaders
+  namespace: kubeinvaders
+  labels:
+    app: kubeinvaders
+    chart: kubeinvaders-1.9.6
+    release: kubeinvaders
+    heritage: Helm
+rules:
+- apiGroups: [""]
+  resources: ["pods", "pods/log", "jobs"]
+  verbs: ["get", "list", "delete", "create"]
+---
+# Source: kubeinvaders/templates/rbac.yaml
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kubeinvaders
+  namespace: kubeinvaders
+  labels:
+    app: kubeinvaders
+    chart: kubeinvaders-1.9.6
+    release: kubeinvaders
+    heritage: Helm
+subjects:
+- kind: ServiceAccount
+  name: kubeinvaders
+  namespace: kubeinvaders
+roleRef:
+  kind: Role
+  name: kubeinvaders
+  apiGroup: rbac.authorization.k8s.io
+---
+# Source: kubeinvaders/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubeinvaders
+  labels:
+    app.kubernetes.io/name: kubeinvaders
+    helm.sh/chart: kubeinvaders-1.9.6
+    app.kubernetes.io/instance: kubeinvaders
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+
+  selector:
+    app.kubernetes.io/name: kubeinvaders
+    app.kubernetes.io/instance: kubeinvaders
+---
+# Source: kubeinvaders/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubeinvaders
+  labels:
+    app.kubernetes.io/name: kubeinvaders
+    helm.sh/chart: kubeinvaders-1.9.6
+    app.kubernetes.io/instance: kubeinvaders
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kubeinvaders
+      app.kubernetes.io/instance: kubeinvaders
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kubeinvaders
+        app.kubernetes.io/instance: kubeinvaders
+        app.kubernetes.io/managed-by: Helm
+      annotations:
+        prometheus.io/scrape: "true"
+    spec:
+      serviceAccountName: kubeinvaders
+      containers:
+        - env:
+          - name: ENDPOINT
+            value: kubeinvaders.apps.hosted.hypershiftbm.lab
+          - name: NAMESPACE
+            value: targets
+          - name: ALIENPROXIMITY
+            value: "10"
+          - name: HITSLIMIT
+            value: "1"
+          - name: UPDATETIME
+            value: "0.5"
+          name: kubeinvaders
+          image: "registry.hypershiftbm.lab:5000/luckysideburn/kubeinvaders:v1.9.6"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+---
+# Source: kubeinvaders/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    "helm.sh/hook": "pre-install"
+  name: kubeinvaders
+  labels:
+    app: kubeinvaders
+    chart: kubeinvaders-1.9.6
+    release: kubeinvaders
+    heritage: Helm
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: kubeinvaders
+  namespace: "kubeinvaders"
+spec:
+  host: "kubeinvaders.apps.hosted.hypershiftbm.lab"
+  port:
+    targetPort: 8080
+  to:
+    name: kubeinvaders
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: Edge
