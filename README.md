@@ -63,13 +63,6 @@ make syntax
     - oc
     - kubectl
     - oc-mirror
-
-- Add services
-    - Minio
-    - squid
-    - ldap
-
-- Add env file
 - Gen ssh key
 - Render samples into hub folder
 
