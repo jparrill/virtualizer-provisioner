@@ -1,4 +1,5 @@
 [anygroup]
-kaido     ansible_host=10.6.48.46 ansible_user=root
+bigmom     ansible_host=10.6.48.240 ansible_user=root
+#kaido     ansible_host=10.6.48.46 ansible_user=root
 #test-centos ansible_host=centos@orb ansible_user=root
 

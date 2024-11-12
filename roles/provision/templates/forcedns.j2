@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export IP="{{ ipv6_network }}::1"
+export IP="{{ dual_ipv6_network }}::1"
 export BASE_RESOLV_CONF="/run/NetworkManager/resolv.conf"
 
 if ! [[ `grep -q "$IP" /etc/resolv.conf` ]]; then
